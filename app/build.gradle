@@ -34,6 +34,9 @@ dependencies {
   provided 'org.glassfish:javax.annotation:10.0-b28'
   compile 'joda-time:joda-time:2.7'
 
+  testCompile 'junit:junit:4.12'
+  testCompile 'com.google.truth:truth:0.25'
+
   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
   androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
   androidTestCompile "com.google.dexmaker:dexmaker:${DEXMAKER_VERSION}"

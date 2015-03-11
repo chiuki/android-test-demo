@@ -1,5 +1,6 @@
 package com.sqisland.android.test_demo;
 
+import android.content.Intent;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.joda.time.DateTime;
@@ -43,5 +44,21 @@ public class MainActivityTest {
 
     onView(withId(R.id.date))
         .check(matches(withText("2008-09-23")));
+  }
+
+  @Test
+  public void intent() {
+    launcher.setLaunchIntentModifier(new ActivityLauncher.IntentModifier() {
+      @Override
+      public void modify(Intent intent) {
+        DateTime dateTime = new DateTime(2014, 10, 15, 0, 0, 0);
+        intent.putExtra(MainActivity.KEY_MILLIS, dateTime.getMillis());
+      }
+    });
+
+    launcher.getActivity();
+
+    onView(withId(R.id.date))
+        .check(matches(withText("2014-10-15")));
   }
 }

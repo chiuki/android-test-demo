@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.joda.time.DateTime;
+
 import javax.inject.Inject;
 
 public class MainActivity extends Activity {
+  public static final String KEY_MILLIS = "millis";
+
   @Inject
   Clock clock;
 
@@ -18,6 +22,9 @@ public class MainActivity extends Activity {
     ((DemoApplication) getApplication()).component().inject(this);
 
     TextView todayView = (TextView) findViewById(R.id.date);
-    todayView.setText(DateUtils.format(clock.getNow()));
+
+    long millis = getIntent().getLongExtra(KEY_MILLIS, -1);
+    DateTime dateTime = (millis > 0) ? new DateTime(millis) : clock.getNow();
+    todayView.setText(DateUtils.format(dateTime));
   }
 }

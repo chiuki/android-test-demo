@@ -21,6 +21,7 @@ public class ActivityLauncher<T extends Activity> {
   }
 
   private final Class<T> activityClass;
+  private IntentModifier intentModifier;
 
   private T activity;
   private Instrumentation instrumentation;
@@ -34,7 +35,6 @@ public class ActivityLauncher<T extends Activity> {
         .mockClockModule(new MockClockModule())
         .build();
     app.setComponent(component);
-
   }
 
   public DemoApplication getApplication() {
@@ -45,7 +45,20 @@ public class ActivityLauncher<T extends Activity> {
     Intent intent = new Intent(Intent.ACTION_MAIN);
     intent.setClassName(targetPackage, activityClass.getName());
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+    if (intentModifier != null) {
+      intentModifier.modify(intent);
+    }
+
     return intent;
+  }
+
+  public void setLaunchIntentModifier(IntentModifier intentModifier) {
+    this.intentModifier = intentModifier;
+  }
+
+  public interface IntentModifier {
+    void modify(Intent intent);
   }
 
   /**

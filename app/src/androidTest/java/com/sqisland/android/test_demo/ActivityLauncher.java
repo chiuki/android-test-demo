@@ -31,7 +31,7 @@ public class ActivityLauncher<T extends Activity> {
 
     DemoApplication app
         = (DemoApplication) fetchInstrumentation().getTargetContext().getApplicationContext();
-    TestComponent component = Dagger_ActivityLauncher_TestComponent.builder()
+    TestComponent component = DaggerActivityLauncher_TestComponent.builder()
         .mockClockModule(new MockClockModule())
         .build();
     app.setComponent(component);

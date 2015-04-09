@@ -17,7 +17,7 @@ public class DemoApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
     if (component == null) {
-      component = Dagger_DemoApplication_ApplicationComponent.builder()
+      component = DaggerDemoApplication_ApplicationComponent.builder()
           .clockModule(new ClockModule())
           .build();
     }

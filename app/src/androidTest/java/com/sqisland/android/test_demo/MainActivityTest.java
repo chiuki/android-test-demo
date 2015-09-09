@@ -45,9 +45,7 @@ public class MainActivityTest {
     Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
     DemoApplication app
         = (DemoApplication) instrumentation.getTargetContext().getApplicationContext();
-    TestComponent component = DaggerMainActivityTest_TestComponent.builder()
-        .mockClockModule(new MockClockModule())
-        .build();
+    TestComponent component = DaggerMainActivityTest_TestComponent.builder().build();
     app.setComponent(component);
     component.inject(this);
   }

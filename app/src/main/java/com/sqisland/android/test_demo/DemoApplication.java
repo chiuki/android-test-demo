@@ -5,6 +5,7 @@ import android.app.Application;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import android.support.annotation.VisibleForTesting;
 
 public class DemoApplication extends Application {
   @Singleton
@@ -23,7 +24,7 @@ public class DemoApplication extends Application {
     }
   }
 
-  public void setComponent(DemoComponent component) {
+  @VisibleForTesting void setComponent(DemoComponent component) {
     this.component = component;
   }
 

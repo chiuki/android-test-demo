@@ -7,19 +7,13 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 public class DemoApplication extends Application {
-  @Singleton
-  @Component(modules = ClockModule.class)
-  public interface ApplicationComponent extends DemoComponent {
-  }
 
   private DemoComponent component = null;
 
   @Override public void onCreate() {
     super.onCreate();
     if (component == null) {
-      component = DaggerDemoApplication_ApplicationComponent.builder()
-          .clockModule(new ClockModule())
-          .build();
+      component = DaggerDemoComponent.builder().build();
     }
   }
 

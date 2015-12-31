@@ -12,7 +12,7 @@ public class DemoApplication extends Application {
   public interface ApplicationComponent extends DemoComponent {
   }
 
-  private DemoComponent component = createComponent();
+  private final DemoComponent component = createComponent();
 
   protected DemoComponent createComponent() {
     return DaggerDemoApplication_ApplicationComponent.builder()

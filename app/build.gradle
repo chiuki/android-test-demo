@@ -36,6 +36,7 @@ dependencies {
   apt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
   provided 'org.glassfish:javax.annotation:10.0-b28'
   compile 'joda-time:joda-time:2.7'
+  compile 'com.android.support:support-annotations:22.2.0'
 
   testCompile 'junit:junit:4.12'
   testCompile 'com.google.truth:truth:0.25'

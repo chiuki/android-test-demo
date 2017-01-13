@@ -25,7 +25,7 @@ android {
   }
 }
 
-final DAGGER_VERSION = '2.7'
+final DAGGER_VERSION = '2.8'
 final DEXMAKER_VERSION = '1.2'
 final RUNNER_VERSION = '0.5'
 final ESPRESSO_VERSION = '2.2.2'
@@ -34,10 +34,10 @@ dependencies {
   compile "com.google.dagger:dagger:${DAGGER_VERSION}"
   annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
   provided 'javax.annotation:jsr250-api:1.0'
-  compile 'joda-time:joda-time:2.7'
+  compile 'joda-time:joda-time:2.9.7'
 
   testCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.30'
+  testCompile 'com.google.truth:truth:0.31'
 
   androidTestCompile "com.android.support.test:runner:${RUNNER_VERSION}"
   androidTestCompile "com.android.support.test:rules:${RUNNER_VERSION}"

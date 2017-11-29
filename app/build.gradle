@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion '25.0.2'
+  compileSdkVersion 27
+  buildToolsVersion '27.0.1'
 
   defaultConfig {
     applicationId 'com.sqisland.android.test_demo'
-    minSdkVersion 8
-    targetSdkVersion 25
+    minSdkVersion 15
+    targetSdkVersion 27
     versionCode 1
     versionName '1.0.0'
 
@@ -25,23 +25,23 @@ android {
   }
 }
 
-final DAGGER_VERSION = '2.11'
-final RUNNER_VERSION = '0.5'
-final ESPRESSO_VERSION = '2.2.2'
+final DAGGER_VERSION = '2.13'
+final RUNNER_VERSION = '1.0.1'
+final ESPRESSO_VERSION = '3.0.1'
 
 dependencies {
-  compile "com.google.dagger:dagger:${DAGGER_VERSION}"
+  implementation "com.google.dagger:dagger:${DAGGER_VERSION}"
   annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
   provided 'javax.annotation:jsr250-api:1.0'
-  compile 'joda-time:joda-time:2.9.9'
+  implementation 'joda-time:joda-time:2.9.9'
 
-  testCompile 'junit:junit:4.12'
-  testCompile 'com.google.truth:truth:0.34'
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'com.google.truth:truth:0.34'
 
-  androidTestCompile "com.android.support.test:runner:${RUNNER_VERSION}"
-  androidTestCompile "com.android.support.test:rules:${RUNNER_VERSION}"
-  androidTestCompile "com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}"
-  androidTestCompile "com.android.support.test.espresso:espresso-intents:${ESPRESSO_VERSION}"
-  androidTestCompile 'org.mockito:mockito-android:2.8.47'
+  androidTestImplementation "com.android.support.test:runner:${RUNNER_VERSION}"
+  androidTestImplementation "com.android.support.test:rules:${RUNNER_VERSION}"
+  androidTestImplementation "com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}"
+  androidTestImplementation "com.android.support.test.espresso:espresso-intents:${ESPRESSO_VERSION}"
+  androidTestImplementation 'org.mockito:mockito-android:2.12.0'
   androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
 }

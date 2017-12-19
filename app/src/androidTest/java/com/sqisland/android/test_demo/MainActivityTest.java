@@ -13,9 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
+import dagger.BindsInstance;
 import dagger.Component;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -25,13 +23,17 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
-  @Inject
   Clock clock;
 
-  @Singleton
-  @Component(modules = MockClockModule.class)
-  public interface TestComponent extends DemoComponent {
-    void inject(MainActivityTest mainActivityTest);
+  @Component
+  public interface TestComponent extends DemoApplication.ApplicationComponent {
+
+    @Component.Builder
+    interface Builder {
+      TestComponent build();
+
+      @BindsInstance Builder clock(Clock clock);
+    }
   }
 
   @Rule
@@ -43,10 +45,12 @@ public class MainActivityTest {
   @Before
   public void setUp() {
     Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-    DemoApplication app
-        = (DemoApplication) instrumentation.getTargetContext().getApplicationContext();
-    TestComponent component = (TestComponent) app.component();
-    component.inject(this);
+    MockDemoApplication app
+        = (MockDemoApplication) instrumentation.getTargetContext().getApplicationContext();
+
+    clock = Mockito.mock(Clock.class);
+    TestComponent testComponent = DaggerMainActivityTest_TestComponent.builder().clock(clock).build();
+    app.setTestComponent(testComponent);
   }
 
   @Test

@@ -37,7 +37,7 @@ task createTestReports(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'cre
             '**/android/databinding/*Binding.*',
             '**/BR.*',
             '**/R.*',
-            '**/R$*.*',
+            '**/*$*.*',
             '**/BuildConfig.*',
             '**/Manifest*.*',
             '**/*_MembersInjector.*',
@@ -65,7 +65,7 @@ task createTestReports(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'cre
     //if you have kotlin
     //def kotlinClasses = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug/", excludes: fileFilter)
     //Used by jacoco to collect class files for analysis, here we’re giving it the path stored in our debugTree declaration
-    //由jacoco用来收集类文件以进行分析，在这里，我们给它存储在debugTree声明中的路径
+    //由jacoco用来收集类文件以进行分析，在这里，我们给它存储在javaClasses声明中的路径
     classDirectories.setFrom(files([javaClasses]))
     //Used by jacoco to save the results of the report generation, this must have the .exec extension but you can decide the path
     //由jacoco用于保存报告生成的结果，该扩展名必须具有.exec扩展名，但是您可以确定路径

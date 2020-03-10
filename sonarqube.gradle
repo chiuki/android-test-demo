@@ -15,8 +15,9 @@ sonarqube {
         property "sonar.libraries", libraries
         property "sonar.java.test.libraries", libraries
         //Set jacoco Configuration
+        def files = fileTree("${project.buildDir}/outputs/code_coverage/debugAndroidTest/connected/").filter { it.isFile() }.files.name
         def reportPaths = fileTree(dir: project.buildDir, includes: [
-                'jacoco/testDebugUnitTest.exec', 'outputs/code_coverage/debugAndroidTest/connected/*coverage.ec'
+                'jacoco/testDebugUnitTest.exec', "outputs/code_coverage/debugAndroidTest/connected/${files[0]}"
         ])
         property "sonar.jacoco.reportPaths", reportPaths//The path pointing to your unit/instrumentation test coverage report
         property "sonar.java.coveragePlugin", "jacoco"

@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
-
+apply from: "${project.rootDir}/jacoco.gradle"
+apply from: "${project.rootDir}/sonarqube.gradle"
 android {
-  compileSdkVersion 27
-  buildToolsVersion '27.0.1'
+  compileSdkVersion 28
+  buildToolsVersion '28.0.3'
 
   defaultConfig {
     applicationId 'com.sqisland.android.test_demo'
     minSdkVersion 15
-    targetSdkVersion 27
+    targetSdkVersion 28
     versionCode 1
     versionName '1.0.0'
 
@@ -24,6 +25,7 @@ android {
     exclude 'LICENSE.txt'
   }
 }
+
 
 final DAGGER_VERSION = '2.13'
 final RUNNER_VERSION = '1.0.1'
@@ -45,3 +47,4 @@ dependencies {
   androidTestImplementation 'org.mockito:mockito-android:2.12.0'
   androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
 }
+

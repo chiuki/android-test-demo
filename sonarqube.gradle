@@ -14,11 +14,11 @@ sonarqube {
         def libraries = project.android.sdkDirectory.getPath() + "/platforms/"+android.compileSdkVersion+"/android.jar"
         property "sonar.libraries", libraries
         property "sonar.java.test.libraries", libraries
-        def files = fileTree("${project.buildDir}/outputs/code_coverage/debugAndroidTest/connected/").filter { it.isFile() }.files.name
-        def itReportPath = "${project.buildDir}/outputs/code_coverage/debugAndroidTest/connected/" + files[0];
         //Set jacoco Configuration
-        property "sonar.jacoco.reportPath","${project.buildDir}/jacoco/testDebugUnitTest.exec"//The path pointing to your unit test coverage report
-        property "sonar.jacoco.itReportPath",  itReportPath//The path pointing to your instrumentation test coverage report.
+        def reportPaths = fileTree(dir: project.buildDir, includes: [
+                'jacoco/testDebugUnitTest.exec', 'outputs/code_coverage/debugAndroidTest/connected/*coverage.ec'
+        ])
+        property "sonar.jacoco.reportPaths", reportPaths//The path pointing to your unit/instrumentation test coverage report
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
         property "sonar.android.lint.report", "build/reports/lint-results.xml"

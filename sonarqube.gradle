@@ -2,9 +2,9 @@ apply plugin: 'org.sonarqube'
 
 sonarqube {
     properties {
-        property "sonar.host.url", "http://localhost:9000/"//sonar server url
+//        property "sonar.host.url", "http://localhost:9000/"//sonar server url
         property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.login", "cb9e9fcb9aa565f0a348bde011945d69f3c1bc3f" //sonar project token
+//        property "sonar.login", "cb9e9fcb9aa565f0a348bde011945d69f3c1bc3f" //sonar project token
         property "sonar.projectVersion", android.defaultConfig.versionName
         property "sonar.sources", "src/main/java"
         property "sonar.binaries", "build/intermediates/javac/debug/classes"// The path pointing to .class files used for analysis.
@@ -21,11 +21,9 @@ sonarqube {
         ])
         property "sonar.jacoco.reportPaths", reportPaths//The path pointing to your unit/instrumentation test coverage report
         property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
-        property "sonar.android.lint.report", "build/reports/lint-results.xml"
+//        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
+//        property "sonar.android.lint.report", "build/reports/lint-results.xml"
     }
 }
-
-
 
 

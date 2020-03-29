@@ -8,5 +8,3 @@ Blog posts:
    * http://blog.sqisland.com/2015/12/mock-application-in-espresso.html
    * http://blog.sqisland.com/2015/04/espresso-21-activitytestrule.html
 
-
-test

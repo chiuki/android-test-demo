@@ -10,7 +10,6 @@ sonarqube {
         property "sonar.java.test.binaries", "build/intermediates/javac/debug/classes"
         property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/createTestReports/createTestReports.xml"
         property "sonar.java.coveragePlugin", "jacoco"
-
     }
 }
 
